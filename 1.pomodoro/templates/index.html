@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="timer-card">
+        <h1>Pomodoro Timer</h1>
+        <p id="mode-label" class="mode">Work</p>
+        <p id="status-label" class="status">Ready</p>
+        <p id="time-display" class="time">25:00</p>
+
+        <div class="button-row mode-row">
+          <button type="button" data-mode="work">Work</button>
+          <button type="button" data-mode="shortBreak">Short Break</button>
+          <button type="button" data-mode="longBreak">Long Break</button>
+        </div>
+
+        <div class="button-row action-row">
+          <button id="start-btn" type="button">Start</button>
+          <button id="pause-btn" type="button">Pause</button>
+          <button id="resume-btn" type="button">Resume</button>
+          <button id="reset-btn" type="button">Reset</button>
+        </div>
+
+        <section class="settings">
+          <h2>Settings</h2>
+          <form id="settings-form" class="settings-form">
+            <label>
+              Work (min)
+              <input id="work-min" name="workMin" type="number" min="1" max="180" step="1" required />
+            </label>
+            <label>
+              Short Break (min)
+              <input id="short-break-min" name="shortBreakMin" type="number" min="1" max="60" step="1" required />
+            </label>
+            <label>
+              Long Break (min)
+              <input id="long-break-min" name="longBreakMin" type="number" min="1" max="90" step="1" required />
+            </label>
+            <label>
+              Long Break Every
+              <input id="long-break-every" name="longBreakEvery" type="number" min="1" max="12" step="1" required />
+            </label>
+            <label class="check">
+              <input id="auto-start-break" name="autoStartBreak" type="checkbox" />
+              Auto start break
+            </label>
+            <label class="check">
+              <input id="auto-start-work" name="autoStartWork" type="checkbox" />
+              Auto start work
+            </label>
+            <button id="save-settings-btn" type="submit">Save Settings</button>
+          </form>
+          <p id="settings-message" class="settings-message" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/timer-core.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+  </body>
+</html>
