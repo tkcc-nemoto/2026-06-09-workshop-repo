@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from flask import Flask, render_template
@@ -19,4 +20,5 @@ def index():
 
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=5000, debug=True)
+	debug_mode = os.getenv("FLASK_DEBUG", "").lower() in ("1", "true", "yes", "on")
+	app.run(host="0.0.0.0", port=5000, debug=debug_mode)
